@@ -1,45 +1,30 @@
-import os
-from telethon import TelegramClient
-from telethon.tl.types import InputMessagesFilterPhotos
-
-# Введите свои данные API Telegram
-api_id = YOUR_API_ID
-api_hash = 'YOUR_API_HASH'
-phone = 'YOUR_PHONE_NUMBER'
-
-# Инициализация клиента Telethon
-client = TelegramClient('session_name', api_id, api_hash)
+from pyrogram import Client
 
 
-async def main():
-    # Авторизация в Telegram
-    await client.connect()
-    if not await client.is_user_authorized():
-        await client.send_code_request(phone)
-        await client.sign_in(phone, input('Введите код: '))
-
-    # ID группы или канала, который нужно спарсить
-    group_id = YOUR_GROUP_ID
-
-    # Получение всех фотографий из постов
-    messages = await client.get_messages(group_id, filter=InputMessagesFilterPhotos)
-
-    # Создание папки для сохранения фотографий, если она не существует
-    if not os.path.exists('photos'):
-        os.makedirs('photos')
-
-    # Сохранение фотографий в папки, имена которых соответствуют ID постов
-    for message in messages:
-        folder_name = f'photos/{message.id}'
-        if not os.path.exists(folder_name):
-            os.makedirs(folder_name)
-        for i, photo in enumerate(message.photo):
-            file_name = f'{folder_name}/{i}.jpg'
-            await client.download_media(photo, file=file_name)
-
-    print('Фотографии сохранены в папках постов.')
+def connecting_to_an_account():
+    """Подключение к аккаунту"""
+    api_id = 12345
+    api_hash = "0123456789abcdef0123456789abcdef"
+    app = Client("accounts/telethon", api_id=api_id, api_hash=api_hash)
+    app.start()
+    return app
 
 
-# Запуск скрипта
-with client:
-    client.loop.run_until_complete(main())
+def getting_the_account_name_and_number(app):
+    """Получение имени и номера аккаунта"""
+    # Get the phone number and username of the current account
+    me = app.get_me()
+    phone_number = me.phone_number or "not available"
+    username = me.username or "not available"
+    print("Phone number:", phone_number)
+    print("Username:", username)
+
+
+def main():
+    app = connecting_to_an_account()
+    getting_the_account_name_and_number(app)
+    app.stop()
+
+
+if __name__ == "__main__":
+    main()
