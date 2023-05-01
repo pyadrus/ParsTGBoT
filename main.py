@@ -1,30 +1,39 @@
-from pyrogram import Client
+import asyncio
+import os
+from datetime import datetime
+from telethon import TelegramClient
+from telethon.tl.types import PeerChannel
 
 
-def connecting_to_an_account():
-    """Подключение к аккаунту"""
-    api_id = 12345
-    api_hash = "0123456789abcdef0123456789abcdef"
-    app = Client("accounts/telethon", api_id=api_id, api_hash=api_hash)
-    app.start()
-    return app
+async def main():
+    # Группа или канал с которого парсим
+    chat = "https://t.me/+VrDS1_bG0bExNzQy"
+    # ID программы
+    api_id = 7655060
+    # HASH программы
+    api_hash = 'cc1290cd733c1f1d407598e5a31be4a8'
+    # Соединяемся с аккаунтом Telegram
+    client = TelegramClient('accounts/telethon', api_id, api_hash)
+    # Запускаем соединение
+    await client.connect()
+    channel = await client.get_entity(chat)
+    # Получаем ID чата или группы
+    c = await client.get_entity(PeerChannel(channel.id))
+    # Перебираем посты
+    async for m in client.iter_messages(c):
+        if m.media is not None:
+            print(m.media)
+            # Скачиваем изображение
+            post_date = datetime.fromtimestamp(m.date.timestamp()).strftime(' _%Y-%m-%d_%H-%M')
+            folder_path = f"image/{post_date}"
+            os.makedirs(folder_path, exist_ok=True)  # Создаем папку с датой и временем поста, если ее еще нет
+            file_path = f"{folder_path}/{m.id}.jpg"  # Имя файла включает идентификатор поста и идентификатор фотографии
+            await m.download_media(file_path)
+            print(f"Downloaded media to {file_path}")
+    # Закрываем соединение
+    await client.disconnect()
 
 
-def getting_the_account_name_and_number(app):
-    """Получение имени и номера аккаунта"""
-    # Get the phone number and username of the current account
-    me = app.get_me()
-    phone_number = me.phone_number or "not available"
-    username = me.username or "not available"
-    print("Phone number:", phone_number)
-    print("Username:", username)
+asyncio.run(main())
 
 
-def main():
-    app = connecting_to_an_account()
-    getting_the_account_name_and_number(app)
-    app.stop()
-
-
-if __name__ == "__main__":
-    main()
