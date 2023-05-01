@@ -1,17 +1,22 @@
 import asyncio
+import configparser
 import os
 from datetime import datetime
+
 from telethon import TelegramClient
 from telethon.tl.types import PeerChannel
-import configparser
+from loguru import logger
 
 config = configparser.ConfigParser(empty_lines_in_values=False, allow_no_value=True)
 config.read('setting/config.ini')
 config.read('setting_user/config.ini')
 
-channel_url = config['link_to_the_group']['target_group_entity']
+channel_url = str(config['link_to_the_group']['target_group_entity'])
 api_id = int(config['telegram_settings']['id'])
 api_hash = config['telegram_settings']['hash']
+
+# Логирование программы
+logger.add("setting/log/log.log", rotation="1 MB", compression="zip")
 
 
 async def download_images_from_telegram_channel(channel_url: str, api_id: int, api_hash: str) -> None:
@@ -55,6 +60,10 @@ async def download_images_from_telegram_channel(channel_url: str, api_id: int, a
     # Закрываем соединение
     await client.disconnect()
 
-
-# Выполняем парсинг
-asyncio.run(download_images_from_telegram_channel(channel_url, api_id, api_hash))
+if __name__ == "__main__":
+    try:
+        # Выполняем парсинг
+        asyncio.run(download_images_from_telegram_channel(channel_url, api_id, api_hash))
+    except Exception as e:
+        logger.exception(e)
+        print("[bold red][!] Произошла ошибка, для подробного изучения проблемы просмотрите файл log.log")
