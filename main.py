@@ -3,37 +3,58 @@ import os
 from datetime import datetime
 from telethon import TelegramClient
 from telethon.tl.types import PeerChannel
+import configparser
+
+config = configparser.ConfigParser(empty_lines_in_values=False, allow_no_value=True)
+config.read('setting/config.ini')
+config.read('setting_user/config.ini')
+
+channel_url = config['link_to_the_group']['target_group_entity']
+api_id = int(config['telegram_settings']['id'])
+api_hash = config['telegram_settings']['hash']
 
 
-async def main():
-    # Группа или канал с которого парсим
-    chat = "https://t.me/+VrDS1_bG0bExNzQy"
-    # ID программы
-    api_id = 7655060
-    # HASH программы
-    api_hash = 'cc1290cd733c1f1d407598e5a31be4a8'
-    # Соединяемся с аккаунтом Telegram
+async def download_images_from_telegram_channel(channel_url: str, api_id: int, api_hash: str) -> None:
+    """
+    Функция скачивает все изображения из заданного канала Telegram
+    :param channel_url: ссылка на канал Telegram, например "https://t.me/+VrDS1_bG0bExNzQy"
+    :param api_id: ID программы
+    :param api_hash: HASH программы
+    """
+    # Устанавливаем соединение с аккаунтом Telegram
     client = TelegramClient('accounts/telethon', api_id, api_hash)
-    # Запускаем соединение
     await client.connect()
-    channel = await client.get_entity(chat)
+
+    # Получаем объект канала
+    channel = await client.get_entity(channel_url)
+
     # Получаем ID чата или группы
-    c = await client.get_entity(PeerChannel(channel.id))
+    peer_channel = PeerChannel(channel.id)
+
     # Перебираем посты
-    async for m in client.iter_messages(c):
-        if m.media is not None:
-            print(m.media)
-            # Скачиваем изображение
-            post_date = datetime.fromtimestamp(m.date.timestamp()).strftime(' _%Y-%m-%d_%H-%M')
-            folder_path = f"image/{post_date}"
-            os.makedirs(folder_path, exist_ok=True)  # Создаем папку с датой и временем поста, если ее еще нет
-            file_path = f"{folder_path}/{m.id}.jpg"  # Имя файла включает идентификатор поста и идентификатор фотографии
-            await m.download_media(file_path)
+    async for message in client.iter_messages(peer_channel):
+        # Если в посте есть медиафайлы
+        if message.media is not None:
+            print(f"Downloading media from post {message.id}")
+
+            # Определяем дату и время публикации поста
+            post_date = datetime.fromtimestamp(message.date.timestamp()).strftime('%Y-%m-%d_%H-%M')
+
+            # Создаем папку с датой и временем поста, если ее еще нет
+            folder_path = f"download/{post_date}"
+            os.makedirs(folder_path, exist_ok=True)
+
+            # Имя файла включает идентификатор поста и идентификатор фотографии
+            file_path = f"{folder_path}/{message.id}.jpg"
+
+            # Скачиваем медиафайл
+            await message.download_media(file_path)
+
             print(f"Downloaded media to {file_path}")
+
     # Закрываем соединение
     await client.disconnect()
 
 
-asyncio.run(main())
-
-
+# Выполняем парсинг
+asyncio.run(download_images_from_telegram_channel(channel_url, api_id, api_hash))
