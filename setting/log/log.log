@@ -1,0 +1,567 @@
+2023-05-04 22:38:15.581 | ERROR    | __main__:<module>:102 - The key is not registered in the system (caused by CheckChatInviteRequest)
+Traceback (most recent call last):
+
+> File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 100, in <module>
+    asyncio.run(download_images_from_telegram_channel(channel_url, api_id, api_hash))
+    │       │   │                                     │            │       └ 'cc1290cd733c1f1d407598e5a31be4a8'
+    │       │   │                                     │            └ 7655060
+    │       │   │                                     └ 'https://t.me/+VrDS1_bG0bExNzQy'
+    │       │   └ <function download_images_from_telegram_channel at 0x0000016080C93E20>
+    │       └ <function run at 0x0000016082E17520>
+    └ <module 'asyncio' from 'C:\\Users\\zhvit\\AppData\\Local\\Programs\\Python\\Python310\\lib\\asyncio\\__init__.py'>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+           │    │                  └ <coroutine object download_images_from_telegram_channel at 0x0000016084F3FCA0>
+           │    └ <function BaseEventLoop.run_until_complete at 0x0000016082E1CF70>
+           └ <ProactorEventLoop running=False closed=True debug=False>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 649, in run_until_complete
+    return future.result()
+           │      └ <method 'result' of '_asyncio.Task' objects>
+           └ <Task finished name='Task-1' coro=<download_images_from_telegram_channel() done, defined at C:\Users\zhvit\YandexDisk\Pars_TG...
+
+  File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 67, in download_images_from_telegram_channel
+    channel = await client.get_entity(channel_url)
+                    │      │          └ 'https://t.me/+VrDS1_bG0bExNzQy'
+                    │      └ <function UserMethods.get_entity at 0x0000016083F12830>
+                    └ <telethon.client.telegramclient.TelegramClient object at 0x0000016084FBD840>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\site-packages\telethon\client\users.py", line 330, in get_entity
+    result.append(await self._get_entity_from_string(x))
+    │      │            │    │                       └ 'https://t.me/+VrDS1_bG0bExNzQy'
+    │      │            │    └ <function UserMethods._get_entity_from_string at 0x0000016083F12A70>
+    │      │            └ <telethon.client.telegramclient.TelegramClient object at 0x0000016084FBD840>
+    │      └ <method 'append' of 'list' objects>
+    └ []
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\site-packages\telethon\client\users.py", line 536, in _get_entity_from_string
+    invite = await self(
+                   └ <telethon.client.telegramclient.TelegramClient object at 0x0000016084FBD840>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\site-packages\telethon\client\users.py", line 30, in __call__
+    return await self._call(self._sender, request, ordered=ordered)
+                 │    │     │    │        │                └ False
+                 │    │     │    │        └ <telethon.tl.functions.messages.CheckChatInviteRequest object at 0x0000016084FBF640>
+                 │    │     │    └ <telethon.network.mtprotosender.MTProtoSender object at 0x0000016084FBDCF0>
+                 │    │     └ <telethon.client.telegramclient.TelegramClient object at 0x0000016084FBD840>
+                 │    └ <function UserMethods._call at 0x0000016083F12560>
+                 └ <telethon.client.telegramclient.TelegramClient object at 0x0000016084FBD840>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\site-packages\telethon\client\users.py", line 83, in _call
+    result = await future
+                   └ <Future finished exception=AuthKeyUnregisteredError('The key is not registered in the system (caused by CheckChatInviteReques...
+
+telethon.errors.rpcerrorlist.AuthKeyUnregisteredError: The key is not registered in the system (caused by CheckChatInviteRequest)
+2023-05-04 22:59:03.106 | ERROR    | __main__:<module>:101 - The key is not registered in the system (caused by CheckChatInviteRequest)
+Traceback (most recent call last):
+
+> File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 99, in <module>
+    asyncio.run(download_images_from_telegram_channel(channel_url))
+    │       │   │                                     └ 'https://t.me/+VrDS1_bG0bExNzQy'
+    │       │   └ <function download_images_from_telegram_channel at 0x000002915C718280>
+    │       └ <function run at 0x000002915A5475B0>
+    └ <module 'asyncio' from 'C:\\Users\\zhvit\\AppData\\Local\\Programs\\Python\\Python310\\lib\\asyncio\\__init__.py'>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+           │    │                  └ <coroutine object download_images_from_telegram_channel at 0x000002915C667D10>
+           │    └ <function BaseEventLoop.run_until_complete at 0x000002915A551000>
+           └ <ProactorEventLoop running=False closed=True debug=False>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 649, in run_until_complete
+    return future.result()
+           │      └ <method 'result' of '_asyncio.Task' objects>
+           └ <Task finished name='Task-1' coro=<download_images_from_telegram_channel() done, defined at C:\Users\zhvit\YandexDisk\Pars_TG...
+
+  File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 66, in download_images_from_telegram_channel
+    channel = await client.get_entity(channel_url)
+                    │      │          └ 'https://t.me/+VrDS1_bG0bExNzQy'
+                    │      └ <function UserMethods.get_entity at 0x000002915BAF1F30>
+                    └ <telethon.client.telegramclient.TelegramClient object at 0x000002915C6B1FC0>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\site-packages\telethon\client\users.py", line 330, in get_entity
+    result.append(await self._get_entity_from_string(x))
+    │      │            │    │                       └ 'https://t.me/+VrDS1_bG0bExNzQy'
+    │      │            │    └ <function UserMethods._get_entity_from_string at 0x000002915BAF2170>
+    │      │            └ <telethon.client.telegramclient.TelegramClient object at 0x000002915C6B1FC0>
+    │      └ <method 'append' of 'list' objects>
+    └ []
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\site-packages\telethon\client\users.py", line 536, in _get_entity_from_string
+    invite = await self(
+                   └ <telethon.client.telegramclient.TelegramClient object at 0x000002915C6B1FC0>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\site-packages\telethon\client\users.py", line 30, in __call__
+    return await self._call(self._sender, request, ordered=ordered)
+                 │    │     │    │        │                └ False
+                 │    │     │    │        └ <telethon.tl.functions.messages.CheckChatInviteRequest object at 0x000002915C6B3EE0>
+                 │    │     │    └ <telethon.network.mtprotosender.MTProtoSender object at 0x000002915C6B2470>
+                 │    │     └ <telethon.client.telegramclient.TelegramClient object at 0x000002915C6B1FC0>
+                 │    └ <function UserMethods._call at 0x000002915BAF1C60>
+                 └ <telethon.client.telegramclient.TelegramClient object at 0x000002915C6B1FC0>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\site-packages\telethon\client\users.py", line 83, in _call
+    result = await future
+                   └ <Future finished exception=AuthKeyUnregisteredError('The key is not registered in the system (caused by CheckChatInviteReques...
+
+telethon.errors.rpcerrorlist.AuthKeyUnregisteredError: The key is not registered in the system (caused by CheckChatInviteRequest)
+2023-05-04 23:10:04.878 | ERROR    | __main__:<module>:128 - The key is not registered in the system (caused by CheckChatInviteRequest)
+Traceback (most recent call last):
+
+> File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 126, in <module>
+    asyncio.run(download_images_from_telegram_channel(channel_url))
+    │       │   │                                     └ 'https://t.me/+VrDS1_bG0bExNzQy'
+    │       │   └ <function download_images_from_telegram_channel at 0x000001AF97CE0310>
+    │       └ <function run at 0x000001AF95B07640>
+    └ <module 'asyncio' from 'C:\\Users\\zhvit\\AppData\\Local\\Programs\\Python\\Python310\\lib\\asyncio\\__init__.py'>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+           │    │                  └ <coroutine object download_images_from_telegram_channel at 0x000001AF97C27D80>
+           │    └ <function BaseEventLoop.run_until_complete at 0x000001AF95B11090>
+           └ <ProactorEventLoop running=False closed=True debug=False>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 649, in run_until_complete
+    return future.result()
+           │      └ <method 'result' of '_asyncio.Task' objects>
+           └ <Task finished name='Task-1' coro=<download_images_from_telegram_channel() done, defined at C:\Users\zhvit\YandexDisk\Pars_TG...
+
+  File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 66, in download_images_from_telegram_channel
+    channel = await client.get_entity(channel_url)
+                    │      │          └ 'https://t.me/+VrDS1_bG0bExNzQy'
+                    │      └ <function UserMethods.get_entity at 0x000001AF970B1FC0>
+                    └ <telethon.client.telegramclient.TelegramClient object at 0x000001AF97C72200>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\site-packages\telethon\client\users.py", line 330, in get_entity
+    result.append(await self._get_entity_from_string(x))
+    │      │            │    │                       └ 'https://t.me/+VrDS1_bG0bExNzQy'
+    │      │            │    └ <function UserMethods._get_entity_from_string at 0x000001AF970B2200>
+    │      │            └ <telethon.client.telegramclient.TelegramClient object at 0x000001AF97C72200>
+    │      └ <method 'append' of 'list' objects>
+    └ []
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\site-packages\telethon\client\users.py", line 536, in _get_entity_from_string
+    invite = await self(
+                   └ <telethon.client.telegramclient.TelegramClient object at 0x000001AF97C72200>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\site-packages\telethon\client\users.py", line 30, in __call__
+    return await self._call(self._sender, request, ordered=ordered)
+                 │    │     │    │        │                └ False
+                 │    │     │    │        └ <telethon.tl.functions.messages.CheckChatInviteRequest object at 0x000001AF97C73CD0>
+                 │    │     │    └ <telethon.network.mtprotosender.MTProtoSender object at 0x000001AF97C726B0>
+                 │    │     └ <telethon.client.telegramclient.TelegramClient object at 0x000001AF97C72200>
+                 │    └ <function UserMethods._call at 0x000001AF970B1CF0>
+                 └ <telethon.client.telegramclient.TelegramClient object at 0x000001AF97C72200>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\site-packages\telethon\client\users.py", line 83, in _call
+    result = await future
+                   └ <Future finished exception=AuthKeyUnregisteredError('The key is not registered in the system (caused by CheckChatInviteReques...
+
+telethon.errors.rpcerrorlist.AuthKeyUnregisteredError: The key is not registered in the system (caused by CheckChatInviteRequest)
+2023-05-05 00:07:18.814 | ERROR    | __main__:<module>:203 - cannot unpack non-iterable coroutine object
+Traceback (most recent call last):
+
+> File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 201, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x0000012C1CDF49D0>
+    │       └ <function run at 0x0000012C1AC27880>
+    └ <module 'asyncio' from 'C:\\Users\\zhvit\\AppData\\Local\\Programs\\Python\\Python310\\lib\\asyncio\\__init__.py'>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+           │    │                  └ <coroutine object main at 0x0000012C1CDD04A0>
+           │    └ <function BaseEventLoop.run_until_complete at 0x0000012C1AC412D0>
+           └ <ProactorEventLoop running=False closed=True debug=False>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 649, in run_until_complete
+    return future.result()
+           │      └ <method 'result' of '_asyncio.Task' objects>
+           └ <Task finished name='Task-1' coro=<main() done, defined at C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py:162> exception=TypeE...
+
+  File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 171, in main
+    connecting_new_account()
+    └ <function connecting_new_account at 0x0000012C1CDF4940>
+
+  File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 151, in connecting_new_account
+    api_id_data, api_hash_data = reading_the_id_and_hash()
+                                 └ <function reading_the_id_and_hash at 0x0000012C1CDF48B0>
+
+TypeError: cannot unpack non-iterable coroutine object
+2023-05-05 00:09:25.902 | ERROR    | __main__:<module>:134 - name 'connecting_new_account' is not defined
+Traceback (most recent call last):
+
+> File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 132, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x000001DE65060A60>
+    │       └ <function run at 0x000001DE62F4F6D0>
+    └ <module 'asyncio' from 'C:\\Users\\zhvit\\AppData\\Local\\Programs\\Python\\Python310\\lib\\asyncio\\__init__.py'>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+           │    │                  └ <coroutine object main at 0x000001DE650415B0>
+           │    └ <function BaseEventLoop.run_until_complete at 0x000001DE62F55120>
+           └ <ProactorEventLoop running=False closed=True debug=False>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 649, in run_until_complete
+    return future.result()
+           │      └ <method 'result' of '_asyncio.Task' objects>
+           └ <Task finished name='Task-1' coro=<main() done, defined at C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py:93> exception=NameEr...
+
+  File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 102, in main
+    connecting_new_account()
+
+NameError: name 'connecting_new_account' is not defined
+2023-05-05 00:09:43.949 | ERROR    | __main__:<module>:134 - cannot unpack non-iterable coroutine object
+Traceback (most recent call last):
+
+> File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 132, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x00000228AEC10A60>
+    │       └ <function run at 0x00000228ACA5F6D0>
+    └ <module 'asyncio' from 'C:\\Users\\zhvit\\AppData\\Local\\Programs\\Python\\Python310\\lib\\asyncio\\__init__.py'>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+           │    │                  └ <coroutine object main at 0x00000228AEBF15B0>
+           │    └ <function BaseEventLoop.run_until_complete at 0x00000228ACA65120>
+           └ <ProactorEventLoop running=False closed=True debug=False>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 649, in run_until_complete
+    return future.result()
+           │      └ <method 'result' of '_asyncio.Task' objects>
+           └ <Task finished name='Task-1' coro=<main() done, defined at C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py:93> exception=TypeEr...
+
+  File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 102, in main
+    connecting_new_account()
+    └ <function connecting_new_account at 0x00000228AEBC3C70>
+
+  File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\setting\system\system_setting.py", line 98, in connecting_new_account
+    api_id_data, api_hash_data = reading_the_id_and_hash()
+                                 └ <function reading_the_id_and_hash at 0x00000228AEBC3A30>
+
+TypeError: cannot unpack non-iterable coroutine object
+2023-05-05 00:10:40.612 | ERROR    | __main__:<module>:134 - cannot unpack non-iterable coroutine object
+Traceback (most recent call last):
+
+> File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 132, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x00000226FA980A60>
+    │       └ <function run at 0x00000226F87AF6D0>
+    └ <module 'asyncio' from 'C:\\Users\\zhvit\\AppData\\Local\\Programs\\Python\\Python310\\lib\\asyncio\\__init__.py'>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+           │    │                  └ <coroutine object main at 0x00000226FA960350>
+           │    └ <function BaseEventLoop.run_until_complete at 0x00000226F87B5120>
+           └ <ProactorEventLoop running=False closed=True debug=False>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 649, in run_until_complete
+    return future.result()
+           │      └ <method 'result' of '_asyncio.Task' objects>
+           └ <Task finished name='Task-1' coro=<main() done, defined at C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py:93> exception=TypeEr...
+
+  File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 102, in main
+    connecting_new_account()
+    └ <function connecting_new_account at 0x00000226FA93BC70>
+
+  File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\setting\system\system_setting.py", line 98, in connecting_new_account
+    api_id_data, api_hash_data = reading_the_id_and_hash()
+                                 └ <function reading_the_id_and_hash at 0x00000226FA93BA30>
+
+TypeError: cannot unpack non-iterable coroutine object
+2023-05-05 00:12:24.008 | ERROR    | __main__:<module>:134 - cannot unpack non-iterable coroutine object
+Traceback (most recent call last):
+
+> File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 132, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x000001D37C310A60>
+    │       └ <function run at 0x000001D37A13F6D0>
+    └ <module 'asyncio' from 'C:\\Users\\zhvit\\AppData\\Local\\Programs\\Python\\Python310\\lib\\asyncio\\__init__.py'>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+           │    │                  └ <coroutine object main at 0x000001D37C2F1380>
+           │    └ <function BaseEventLoop.run_until_complete at 0x000001D37A145120>
+           └ <ProactorEventLoop running=False closed=True debug=False>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 649, in run_until_complete
+    return future.result()
+           │      └ <method 'result' of '_asyncio.Task' objects>
+           └ <Task finished name='Task-1' coro=<main() done, defined at C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py:93> exception=TypeEr...
+
+  File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 102, in main
+    connecting_new_account()
+    └ <function connecting_new_account at 0x000001D37C2C3C70>
+
+  File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\setting\system\system_setting.py", line 98, in connecting_new_account
+    api_id_data, api_hash_data = reading_the_id_and_hash()
+                                 └ <function reading_the_id_and_hash at 0x000001D37C2C3A30>
+
+TypeError: cannot unpack non-iterable coroutine object
+2023-05-05 00:15:22.296 | ERROR    | __main__:<module>:132 - unable to open database file
+Traceback (most recent call last):
+
+> File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 130, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x000002943DB80A60>
+    │       └ <function run at 0x000002943B9A36D0>
+    └ <module 'asyncio' from 'C:\\Users\\zhvit\\AppData\\Local\\Programs\\Python\\Python310\\lib\\asyncio\\__init__.py'>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+           │    │                  └ <coroutine object main at 0x000002943DB61380>
+           │    └ <function BaseEventLoop.run_until_complete at 0x000002943B9A5120>
+           └ <ProactorEventLoop running=False closed=True debug=False>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 649, in run_until_complete
+    return future.result()
+           │      └ <method 'result' of '_asyncio.Task' objects>
+           └ <Task finished name='Task-1' coro=<main() done, defined at C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py:91> exception=Operat...
+
+  File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 100, in main
+    connecting_new_account()
+    └ <function connecting_new_account at 0x000002943DB33C70>
+
+  File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\setting\system\system_setting.py", line 105, in connecting_new_account
+    client = telegram_connect(phone_data, api_id_data, api_hash_data)
+             │                │           │            └ 'cc1290cd733c1f1d407598e5a31be4a8'
+             │                │           └ '7655060'
+             │                └ '+447538712732'
+             └ <function telegram_connect at 0x000002943DB33BE0>
+
+  File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\setting\system\system_setting.py", line 78, in telegram_connect
+    client = TelegramClient(f"setting/accounts/{phone}", api_id, api_hash)
+             │                                           │       └ 'cc1290cd733c1f1d407598e5a31be4a8'
+             │                                           └ '7655060'
+             └ <class 'telethon.client.telegramclient.TelegramClient'>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\site-packages\telethon\client\telegrambaseclient.py", line 289, in __init__
+    session = SQLiteSession(session)
+              │             └ 'setting/accounts/+447538712732'
+              └ <class 'telethon.sessions.sqlite.SQLiteSession'>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\site-packages\telethon\sessions\sqlite.py", line 47, in __init__
+    c = self._cursor()
+        │    └ <function SQLiteSession._cursor at 0x000002943CA87640>
+        └ <telethon.sessions.sqlite.SQLiteSession object at 0x000002943DB119C0>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\site-packages\telethon\sessions\sqlite.py", line 242, in _cursor
+    self._conn = sqlite3.connect(self.filename,
+    │    │       │       │       │    └ 'setting/accounts/+447538712732.session'
+    │    │       │       │       └ <telethon.sessions.sqlite.SQLiteSession object at 0x000002943DB119C0>
+    │    │       │       └ <built-in function connect>
+    │    │       └ <module 'sqlite3' from 'C:\\Users\\zhvit\\AppData\\Local\\Programs\\Python\\Python310\\lib\\sqlite3\\__init__.py'>
+    │    └ None
+    └ <telethon.sessions.sqlite.SQLiteSession object at 0x000002943DB119C0>
+
+sqlite3.OperationalError: unable to open database file
+2023-05-05 00:16:35.410 | ERROR    | __main__:<module>:132 - unable to open database file
+Traceback (most recent call last):
+
+> File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 130, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x0000026980130A60>
+    │       └ <function run at 0x00000269FDF636D0>
+    └ <module 'asyncio' from 'C:\\Users\\zhvit\\AppData\\Local\\Programs\\Python\\Python310\\lib\\asyncio\\__init__.py'>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+           │    │                  └ <coroutine object main at 0x0000026980111380>
+           │    └ <function BaseEventLoop.run_until_complete at 0x00000269FDF65120>
+           └ <ProactorEventLoop running=False closed=True debug=False>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 649, in run_until_complete
+    return future.result()
+           │      └ <method 'result' of '_asyncio.Task' objects>
+           └ <Task finished name='Task-1' coro=<main() done, defined at C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py:91> exception=Operat...
+
+  File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 100, in main
+    connecting_new_account()
+    └ <function connecting_new_account at 0x00000269800EBC70>
+
+  File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\setting\system\system_setting.py", line 105, in connecting_new_account
+    client = telegram_connect(phone_data, api_id_data, api_hash_data)
+             │                │           │            └ 'cc1290cd733c1f1d407598e5a31be4a8'
+             │                │           └ '7655060'
+             │                └ '+447538712732'
+             └ <function telegram_connect at 0x00000269800EBBE0>
+
+  File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\setting\system\system_setting.py", line 78, in telegram_connect
+    client = TelegramClient(f"setting/accounts/{phone}", api_id, api_hash)
+             │                                           │       └ 'cc1290cd733c1f1d407598e5a31be4a8'
+             │                                           └ '7655060'
+             └ <class 'telethon.client.telegramclient.TelegramClient'>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\site-packages\telethon\client\telegrambaseclient.py", line 289, in __init__
+    session = SQLiteSession(session)
+              │             └ 'setting/accounts/+447538712732'
+              └ <class 'telethon.sessions.sqlite.SQLiteSession'>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\site-packages\telethon\sessions\sqlite.py", line 47, in __init__
+    c = self._cursor()
+        │    └ <function SQLiteSession._cursor at 0x00000269FEFD7640>
+        └ <telethon.sessions.sqlite.SQLiteSession object at 0x00000269800C18D0>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\site-packages\telethon\sessions\sqlite.py", line 242, in _cursor
+    self._conn = sqlite3.connect(self.filename,
+    │    │       │       │       │    └ 'setting/accounts/+447538712732.session'
+    │    │       │       │       └ <telethon.sessions.sqlite.SQLiteSession object at 0x00000269800C18D0>
+    │    │       │       └ <built-in function connect>
+    │    │       └ <module 'sqlite3' from 'C:\\Users\\zhvit\\AppData\\Local\\Programs\\Python\\Python310\\lib\\sqlite3\\__init__.py'>
+    │    └ None
+    └ <telethon.sessions.sqlite.SQLiteSession object at 0x00000269800C18D0>
+
+sqlite3.OperationalError: unable to open database file
+2023-05-05 00:18:12.163 | ERROR    | __main__:<module>:132 - unable to open database file
+Traceback (most recent call last):
+
+> File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 130, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x00000188CE880A60>
+    │       └ <function run at 0x00000188CC6B36D0>
+    └ <module 'asyncio' from 'C:\\Users\\zhvit\\AppData\\Local\\Programs\\Python\\Python310\\lib\\asyncio\\__init__.py'>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+           │    │                  └ <coroutine object main at 0x00000188CE860350>
+           │    └ <function BaseEventLoop.run_until_complete at 0x00000188CC6B5120>
+           └ <ProactorEventLoop running=False closed=True debug=False>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 649, in run_until_complete
+    return future.result()
+           │      └ <method 'result' of '_asyncio.Task' objects>
+           └ <Task finished name='Task-1' coro=<main() done, defined at C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py:91> exception=Operat...
+
+  File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 100, in main
+    connecting_new_account()
+    └ <function connecting_new_account at 0x00000188CE83BC70>
+
+  File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\setting\system\system_setting.py", line 105, in connecting_new_account
+    client = telegram_connect(phone_data, api_id_data, api_hash_data)
+             │                │           │            └ 'cc1290cd733c1f1d407598e5a31be4a8'
+             │                │           └ '7655060'
+             │                └ '+447538712732'
+             └ <function telegram_connect at 0x00000188CE83BBE0>
+
+  File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\setting\system\system_setting.py", line 78, in telegram_connect
+    client = TelegramClient(f"setting/accounts/{phone}", api_id, api_hash)
+             │                                           │       └ 'cc1290cd733c1f1d407598e5a31be4a8'
+             │                                           └ '7655060'
+             └ <class 'telethon.client.telegramclient.TelegramClient'>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\site-packages\telethon\client\telegrambaseclient.py", line 289, in __init__
+    session = SQLiteSession(session)
+              │             └ 'setting/accounts/+447538712732'
+              └ <class 'telethon.sessions.sqlite.SQLiteSession'>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\site-packages\telethon\sessions\sqlite.py", line 47, in __init__
+    c = self._cursor()
+        │    └ <function SQLiteSession._cursor at 0x00000188CD797640>
+        └ <telethon.sessions.sqlite.SQLiteSession object at 0x00000188CE8118D0>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\site-packages\telethon\sessions\sqlite.py", line 242, in _cursor
+    self._conn = sqlite3.connect(self.filename,
+    │    │       │       │       │    └ 'setting/accounts/+447538712732.session'
+    │    │       │       │       └ <telethon.sessions.sqlite.SQLiteSession object at 0x00000188CE8118D0>
+    │    │       │       └ <built-in function connect>
+    │    │       └ <module 'sqlite3' from 'C:\\Users\\zhvit\\AppData\\Local\\Programs\\Python\\Python310\\lib\\sqlite3\\__init__.py'>
+    │    └ None
+    └ <telethon.sessions.sqlite.SQLiteSession object at 0x00000188CE8118D0>
+
+sqlite3.OperationalError: unable to open database file
+2023-05-05 00:31:56.409 | ERROR    | __main__:<module>:116 - 'coroutine' object has no attribute 'disconnect'
+Traceback (most recent call last):
+
+> File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 114, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x00000247BDFC0A60>
+    │       └ <function run at 0x00000247BBDF36D0>
+    └ <module 'asyncio' from 'C:\\Users\\zhvit\\AppData\\Local\\Programs\\Python\\Python310\\lib\\asyncio\\__init__.py'>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+           │    │                  └ <coroutine object main at 0x00000247BDFA0350>
+           │    └ <function BaseEventLoop.run_until_complete at 0x00000247BBDF5120>
+           └ <ProactorEventLoop running=False closed=True debug=False>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 649, in run_until_complete
+    return future.result()
+           │      └ <method 'result' of '_asyncio.Task' objects>
+           └ <Task finished name='Task-1' coro=<main() done, defined at C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py:75> exception=Attrib...
+
+  File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 84, in main
+    connecting_new_account()
+    └ <function connecting_new_account at 0x00000247BDF7BC70>
+
+  File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\setting\system\system_setting.py", line 106, in connecting_new_account
+    client.disconnect()  # Разрываем соединение telegram
+    └ <coroutine object telegram_connect at 0x00000247BDFA1700>
+
+AttributeError: 'coroutine' object has no attribute 'disconnect'
+2023-05-05 00:33:40.740 | ERROR    | __main__:<module>:116 - 'coroutine' object has no attribute 'disconnect'
+Traceback (most recent call last):
+
+> File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 114, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x00000241E4910A60>
+    │       └ <function run at 0x00000241E27436D0>
+    └ <module 'asyncio' from 'C:\\Users\\zhvit\\AppData\\Local\\Programs\\Python\\Python310\\lib\\asyncio\\__init__.py'>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+           │    │                  └ <coroutine object main at 0x00000241E48F0EB0>
+           │    └ <function BaseEventLoop.run_until_complete at 0x00000241E2745120>
+           └ <ProactorEventLoop running=False closed=True debug=False>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 649, in run_until_complete
+    return future.result()
+           │      └ <method 'result' of '_asyncio.Task' objects>
+           └ <Task finished name='Task-1' coro=<main() done, defined at C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py:75> exception=Attrib...
+
+  File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 84, in main
+    connecting_new_account()
+    └ <function connecting_new_account at 0x00000241E48C3C70>
+
+  File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\setting\system\system_setting.py", line 106, in connecting_new_account
+    client.disconnect()  # Разрываем соединение telegram
+    └ <coroutine object telegram_connect at 0x00000241E48F1700>
+
+AttributeError: 'coroutine' object has no attribute 'disconnect'
+2023-05-05 00:55:11.962 | ERROR    | __main__:<module>:128 - near "(": syntax error
+Traceback (most recent call last):
+
+> File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 126, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x000002064F760940>
+    │       └ <function run at 0x000002064D58F6D0>
+    └ <module 'asyncio' from 'C:\\Users\\zhvit\\AppData\\Local\\Programs\\Python\\Python310\\lib\\asyncio\\__init__.py'>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+           │    │                  └ <coroutine object main at 0x000002064F741380>
+           │    └ <function BaseEventLoop.run_until_complete at 0x000002064D595120>
+           └ <ProactorEventLoop running=False closed=True debug=False>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 649, in run_until_complete
+    return future.result()
+           │      └ <method 'result' of '_asyncio.Task' objects>
+           └ <Task finished name='Task-1' coro=<main() done, defined at C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py:87> exception=Operat...
+
+  File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\main.py", line 96, in main
+    await connecting_new_account()
+          └ <function connecting_new_account at 0x000002064F71BC70>
+
+  File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\setting\system\system_setting.py", line 105, in connecting_new_account
+    writing_data_to_the_db(creating_a_table, writing_data_to_a_table, entities)
+    │                      │                 │                        └ ('7655060', 'cc1290cd733c1f1d407598e5a31be4a8', '+447538712732')
+    │                      │                 └ 'INSERT INTO config (id, hash, phone) VALUES (?, ?, ?)'
+    │                      └ 'CREATE TABLE IF NOT EXISTS config(id, hash, phone)'
+    └ <function writing_data_to_the_db at 0x000002064F71BB50>
+
+  File "C:\Users\zhvit\YandexDisk\Pars_TG_BoT\setting\system\system_setting.py", line 69, in writing_data_to_the_db
+    cursor.execute(f"DELETE FROM config(id, hash, phone)")
+    │      └ <method 'execute' of 'sqlite3.Cursor' objects>
+    └ <sqlite3.Cursor object at 0x000002064F702E40>
+
+sqlite3.OperationalError: near "(": syntax error
