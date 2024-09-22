@@ -25,7 +25,7 @@ def find_file_in_folder(folder_path, file_extension):
     Функция принимает путь к папке и расширение файла.
     Возвращает имя файла с заданным расширением, найденного в папке.
     Если такого файла нет, возвращает None.
-    :param folder_path: путь к папке
+    :param folder_path: Путь к папке
     :param file_extension: расширение файла
     """
     for file_name in os.listdir(folder_path):
@@ -46,7 +46,7 @@ async def connecting_to_an_account(api_id: int, api_hash: str):
     if file_name:
         print(f'Найден аккаунт {file_name}')
         # Устанавливаем соединение с аккаунтом Telegram
-        client = TelegramClient(f'accounts/{file_name}', api_id, api_hash)
+        client = TelegramClient(f'accounts/{file_name}', api_id, api_hash, system_version="4.16.30-vxCUSTOM")
         await client.connect()
         return client
     else:
@@ -60,15 +60,10 @@ async def download_images_from_telegram_channel(channel_url: str, ) -> None:
     """
 
     client = await connecting_to_an_account(api_id, api_hash)
+    channel = await client.get_entity(channel_url)# Получаем объект канала
+    peer_channel = PeerChannel(channel.id)# Получаем ID чата или группы
 
-    # Получаем объект канала
-    channel = await client.get_entity(channel_url)
-
-    # Получаем ID чата или группы
-    peer_channel = PeerChannel(channel.id)
-
-    # Перебираем посты
-    async for message in client.iter_messages(peer_channel):
+    async for message in client.iter_messages(peer_channel):# Перебираем посты
         # Если в посте есть медиафайлы
         if message.media is not None:
             print(f"Downloading media from post {message.id}")
@@ -82,8 +77,8 @@ async def download_images_from_telegram_channel(channel_url: str, ) -> None:
             # Скачиваем медиафайл
             await message.download_media(file_path)
             print(f"Downloaded media to {file_path}")
-    # Закрываем соединение
-    await client.disconnect()
+
+    await client.disconnect() # Закрываем соединение
 
 
 async def main():

@@ -565,3 +565,78 @@ Traceback (most recent call last):
     └ <sqlite3.Cursor object at 0x000002064F702E40>
 
 sqlite3.OperationalError: near "(": syntax error
+2024-09-22 21:59:34.003 | ERROR    | __main__:<module>:126 - [WinError 32] Процесс не может получить доступ к файлу, так как этот файл занят другим процессом: 'accounts/+447538712732.session'
+Traceback (most recent call last):
+
+> File "C:\Users\zhvit\YandexDisk\Фриланс\Python\Pars_TG_BoT\main.py", line 124, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x000001CD06625C60>
+    │       └ <function run at 0x000001CD033A9EE0>
+    └ <module 'asyncio' from 'C:\\Users\\zhvit\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\asyncio\\__init__.py'>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           │      │   └ <coroutine object main at 0x000001CD0659F440>
+           │      └ <function Runner.run at 0x000001CD037C11C0>
+           └ <asyncio.runners.Runner object at 0x000001CD065D2360>
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │                        └ <Task finished name='Task-1' coro=<main() done, defined at C:\Users\zhvit\YandexDisk\Фриланс\Python\Pars_TG_BoT\main.py:84> e...
+           │    └ None
+           └ <asyncio.runners.Runner object at 0x000001CD065D2360>
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 687, in run_until_complete
+    return future.result()
+           │      └ <method 'result' of '_asyncio.Task' objects>
+           └ <Task finished name='Task-1' coro=<main() done, defined at C:\Users\zhvit\YandexDisk\Фриланс\Python\Pars_TG_BoT\main.py:84> e...
+
+  File "C:\Users\zhvit\YandexDisk\Фриланс\Python\Pars_TG_BoT\main.py", line 86, in main
+    await checking_accounts()
+          └ <function checking_accounts at 0x000001CD065F4D60>
+
+  File "C:\Users\zhvit\YandexDisk\Фриланс\Python\Pars_TG_BoT\system\system_setting.py", line 199, in checking_accounts
+    telegram_phone_number_banned_error(client, phone_old)  # Удаляем номер телефона с базы данных
+    │                                  │       └ '+447538712732'
+    │                                  └ <telethon.client.telegramclient.TelegramClient object at 0x000001CD0525F620>
+    └ <function telegram_phone_number_banned_error at 0x000001CD065F4B80>
+
+  File "C:\Users\zhvit\YandexDisk\Фриланс\Python\Pars_TG_BoT\system\system_setting.py", line 154, in telegram_phone_number_banned_error
+    os.remove(f"accounts/{phone}.session")  # Находим и удаляем сессию
+    │  │                  └ '+447538712732'
+    │  └ <built-in function remove>
+    └ <module 'os' (frozen)>
+
+PermissionError: [WinError 32] Процесс не может получить доступ к файлу, так как этот файл занят другим процессом: 'accounts/+447538712732.session'
+2024-09-22 22:00:13.823 | ERROR    | __main__:<module>:126 - 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+Traceback (most recent call last):
+
+> File "C:\Users\zhvit\YandexDisk\Фриланс\Python\Pars_TG_BoT\main.py", line 124, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x0000022A15A35BC0>
+    │       └ <function run at 0x0000022A12729EE0>
+    └ <module 'asyncio' from 'C:\\Users\\zhvit\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\asyncio\\__init__.py'>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           │      │   └ <coroutine object main at 0x0000022A159AF370>
+           │      └ <function Runner.run at 0x0000022A12B511C0>
+           └ <asyncio.runners.Runner object at 0x0000022A15A16930>
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │                        └ <Task finished name='Task-1' coro=<main() done, defined at C:\Users\zhvit\YandexDisk\Фриланс\Python\Pars_TG_BoT\main.py:84> e...
+           │    └ None
+           └ <asyncio.runners.Runner object at 0x0000022A15A16930>
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 687, in run_until_complete
+    return future.result()
+           │      └ <method 'result' of '_asyncio.Task' objects>
+           └ <Task finished name='Task-1' coro=<main() done, defined at C:\Users\zhvit\YandexDisk\Фриланс\Python\Pars_TG_BoT\main.py:84> e...
+
+  File "C:\Users\zhvit\YandexDisk\Фриланс\Python\Pars_TG_BoT\main.py", line 91, in main
+    user_input = console.input("[bold red][+] Введите номер : ")  # Вводим номер
+                 │       └ <function Console.input at 0x0000022A159FE200>
+                 └ <console width=79 None>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python312\Lib\site-packages\rich\console.py", line 2123, in input
+    result = input()
+  File "<frozen codecs>", line 322, in decode
+
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
