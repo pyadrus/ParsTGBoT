@@ -19,7 +19,10 @@ api_hash = config['telegram_settings']['hash']
 
 
 async def writing_link_to_the_group() -> configparser.ConfigParser:
-    """Записываем ссылку для parsing групп / каналов"""
+    """
+    Записываем ссылку для parsing групп / каналов
+    :return: ссылку на группу / канала
+    """
     target_group_entity_user = console.input("[bold green][+] Введите ссылку на группу : ")  # Вводим ссылку на группу
     # Находим ссылку в файле и меняем на свою
     config.get('link_to_the_group', 'target_group_entity')
@@ -28,7 +31,10 @@ async def writing_link_to_the_group() -> configparser.ConfigParser:
 
 
 async def writing_api_id_api_hash() -> configparser.ConfigParser:
-    """Записываем api, hash полученный с помощью регистрации приложения на сайте https://my.telegram.org/auth"""
+    """
+    Записываем api, hash полученный с помощью регистрации приложения на сайте https://my.telegram.org/auth
+    :return: api_id, api_hash
+    """
     api_id_data = console.input("[bold green][+] Введите api_id : ")
     config.get('telegram_settings', 'id')
     config.set('telegram_settings', 'id', api_id_data)
@@ -39,13 +45,19 @@ async def writing_api_id_api_hash() -> configparser.ConfigParser:
 
 
 async def writing_settings_to_a_file(config):
-    """Запись данных в файл setting/config.ini"""
+    """
+    Запись данных в файл setting/config.ini
+    :param config: ссылка на файл с настройками
+    """
     with open('setting/config.ini', 'w') as setup:
         config.write(setup)
 
 
 def reading_the_id_and_hash():
-    """Считываем id и hash"""
+    """
+    Считываем id и hash
+    :return: api_id, api_hash
+    """
     config.read('setting/config.ini')  # Файл с настройками
     api_id_data = config['telegram_settings']['id']  # api_id с файла setting_user/api_id_api_hash.ini
     api_hash_data = config['telegram_settings']['hash']  # api_hash с файла setting_user/api_id_api_hash.ini
@@ -53,7 +65,10 @@ def reading_the_id_and_hash():
 
 
 def connecting_to_the_database():
-    """Подключение к базе данных"""
+    """
+    Подключение к базе данных
+    :return: sqlite_connection, cursor
+    """
     with sqlite3.connect('setting/software_database.db') as sqlite_connection:
         cursor = sqlite_connection.cursor()
         """
@@ -64,7 +79,12 @@ def connecting_to_the_database():
 
 
 def writing_data_to_the_db(creating_a_table, writing_data_to_a_table, entities) -> None:
-    """Запись действий аккаунта в базу данных"""
+    """
+    Запись действий аккаунта в базу данных
+    :param creating_a_table: создание таблицы
+    :param writing_data_to_a_table: запись данных в таблицу
+    :param entities: данные для записи в таблицу
+    """
     sqlite_connection, cursor = connecting_to_the_database()
     cursor.execute("DELETE FROM config")  # Удаление всех строк из таблицы config
     cursor.execute(creating_a_table)  # Считываем таблицу
@@ -76,7 +96,12 @@ def writing_data_to_the_db(creating_a_table, writing_data_to_a_table, entities) 
 
 
 async def telegram_connect(phone, api_id, api_hash) -> TelegramClient:
-    """Account telegram connect, с проверкой на валидность, если ранее не было соединения, то запрашиваем код"""
+    """
+    Account telegram connect, с проверкой на валидность, если ранее не было соединения, то запрашиваем код
+    :param phone: номер телефона
+    :param api_id: api_id
+    :param api_hash: api_hash
+    """
     client = TelegramClient(f"accounts/{phone}", api_id, api_hash)
     await client.connect()  # Подсоединяемся к Telegram
     if not await client.is_user_authorized():
@@ -118,7 +143,11 @@ def delete_row_db(table, column, value) -> None:
 
 
 def telegram_phone_number_banned_error(client, phone):
-    """Аккаунт banned, удаляем banned аккаунт"""
+    """
+    Аккаунт banned, удаляем banned аккаунт
+    :param client: TelegramClient
+    :param phone: номер телефона
+    """
     client.disconnect()  # Разрываем соединение Telegram, для удаления session файла
     delete_row_db(table="config", column="phone", value=phone)
     try:
@@ -128,7 +157,10 @@ def telegram_phone_number_banned_error(client, phone):
 
 
 def get_from_the_list_phone_api_id_api_hash(row):
-    """Получаем со списка phone, api_id, api_hash"""
+    """
+    Получаем со списка phone, api_id, api_hash
+    :param row: кортеж из 3 элементов
+    """
     users = {'id': int(row[0]), 'hash': row[1], 'phone': row[2]}
     # Вытягиваем данные из кортежа, для подстановки в функцию
     phone = users['phone']
@@ -138,7 +170,10 @@ def get_from_the_list_phone_api_id_api_hash(row):
 
 
 def open_the_db_and_read_the_data(name_database_table) -> list:
-    """Открываем базу считываем данные в качестве аргумента передаем имя таблицы"""
+    """
+    Открываем базу считываем данные в качестве аргумента передаем имя таблицы
+    :param name_database_table: имя таблицы
+    """
     sqlite_connection, cursor = connecting_to_the_database()
     cursor.execute(f"SELECT * from {name_database_table}")
     records: list = cursor.fetchall()

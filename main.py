@@ -25,6 +25,8 @@ def find_file_in_folder(folder_path, file_extension):
     Функция принимает путь к папке и расширение файла.
     Возвращает имя файла с заданным расширением, найденного в папке.
     Если такого файла нет, возвращает None.
+    :param folder_path: путь к папке
+    :param file_extension: расширение файла
     """
     for file_name in os.listdir(folder_path):
         if file_name.endswith(file_extension):
@@ -35,6 +37,8 @@ def find_file_in_folder(folder_path, file_extension):
 async def connecting_to_an_account(api_id: int, api_hash: str):
     """
     Устанавливает соединение с учетной записью Telegram.
+    :param api_id: id аккаунта Telegram
+    :param api_hash: хэш аккаунта Telegram
     """
     folder_path = 'accounts'
     file_extension = '.session'
@@ -53,8 +57,6 @@ async def download_images_from_telegram_channel(channel_url: str, ) -> None:
     """
     Функция скачивает все изображения из заданного канала Telegram
     :param channel_url: ссылка на канал Telegram, например "https://t.me/+VrDS1_bG0bExNzQy"
-    :param api_id: ID программы
-    :param api_hash: HASH программы
     """
 
     client = await connecting_to_an_account(api_id, api_hash)
