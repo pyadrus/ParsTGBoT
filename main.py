@@ -68,7 +68,7 @@ async def download_images_from_telegram_channel(channel_url: str, ) -> None:
         if message.media is not None:
             print(f"Downloading media from post {message.id}")
             # Определяем дату и время публикации поста
-            post_date = datetime.fromtimestamp(message.date.timestamp()).strftime('%Y-%m-%d_%H-%M')
+            post_date = datetime.fromtimestamp(message.date.timestamp()).strftime('%Y-%m-%d_%H-%M_%S')
             # Создаем папку с датой и временем поста, если ее еще нет
             folder_path = f"download/{post_date}"
             os.makedirs(folder_path, exist_ok=True)
