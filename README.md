@@ -1,4 +1,6 @@
-ParsTGBoT (Скачивание постов с Telegram)
+<h1 align="center">ParsTGBoT 🚀 by. <a href="https://t.me/PyAdminRU" target="_blank">PyAdminRU</a></h1>
+
+Скачивание постов с Telegram
 
 Дата создания: 28.04.2023
 Версия: 0.0.5
