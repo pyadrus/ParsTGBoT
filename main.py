@@ -7,7 +7,7 @@ from datetime import datetime
 from loguru import logger
 from rich import print
 from telethon import TelegramClient
-from telethon.tl.types import PeerChannel
+from telethon.tl.types import PeerChannel, MessageMediaDocument, MessageMediaPhoto
 import mistune  # Библиотека для работы с Markdowns
 from system.system_setting import api_hash, connecting_new_account, checking_accounts
 from system.system_setting import api_id
@@ -87,11 +87,19 @@ async def download_images_from_telegram_channel(channel_url: str, ) -> None:
                 with open(f"{folder_path}/{message.id}.json", 'w', encoding='utf-8') as json_file:
                     json.dump(markdown_text, json_file, ensure_ascii=False, indent=4)
 
-            # Имя файла включает идентификатор поста и идентификатор фотографии
-            file_path = f"{folder_path}/{message.id}.jpg"
-            # Скачиваем медиафайл
-            await message.download_media(file_path)
-            print(f"Downloaded media to {file_path}")
+            if isinstance(message.media, MessageMediaDocument):
+                # Имя файла включает идентификатор поста и идентификатор фотографии
+                file_path = f"{folder_path}/{message.id}.mp4"
+                # Скачиваем медиафайл
+                await message.download_media(file_path)
+                print(f"Downloaded media to {file_path}")
+
+            elif isinstance(message.media, MessageMediaPhoto):
+                # Имя файла включает идентификатор поста и идентификатор фотографии
+                file_path = f"{folder_path}/{message.id}.jpg"
+                # Скачиваем медиафайл
+                await message.download_media(file_path)
+                print(f"Downloaded media to {file_path}")
 
     await client.disconnect() # Закрываем соединение
 
@@ -100,7 +108,7 @@ async def main():
     """Основное окно программы"""
     await checking_accounts()
     try:
-        print("[bold red]\nДата создания: 28.04.2023\n Версия программы: 0.0.5")
+        print("[bold red]\nДата создания: 28.04.2023\n Версия программы: 0.0.6")
 
         console.print("[bold green][1] - Подключение нового аккаунта")
         console.print("[bold green][2] - Запуск parsing")
