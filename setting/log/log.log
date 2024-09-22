@@ -640,3 +640,102 @@ Traceback (most recent call last):
   File "<frozen codecs>", line 322, in decode
 
 UnicodeDecodeError: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+2024-09-22 22:26:22.377 | ERROR    | __main__:<module>:128 - 
+Traceback (most recent call last):
+
+> File "C:\Users\zhvit\YandexDisk\Фриланс\Python\Pars_TG_BoT\main.py", line 126, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x0000023738745B20>
+    │       └ <function run at 0x0000023733310680>
+    └ <module 'asyncio' from 'C:\\Users\\zhvit\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\asyncio\\__init__.py'>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           │      │   └ <coroutine object main at 0x00000237386BF5E0>
+           │      └ <function Runner.run at 0x0000023735875580>
+           └ <asyncio.runners.Runner object at 0x00000237373837D0>
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │                        └ <Task finished name='Task-1' coro=<main() done, defined at C:\Users\zhvit\YandexDisk\Фриланс\Python\Pars_TG_BoT\main.py:84> e...
+           │    └ None
+           └ <asyncio.runners.Runner object at 0x00000237373837D0>
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 687, in run_until_complete
+    return future.result()
+           │      └ <method 'result' of '_asyncio.Task' objects>
+           └ <Task finished name='Task-1' coro=<main() done, defined at C:\Users\zhvit\YandexDisk\Фриланс\Python\Pars_TG_BoT\main.py:84> e...
+
+  File "C:\Users\zhvit\YandexDisk\Фриланс\Python\Pars_TG_BoT\main.py", line 93, in main
+    user_input = console.input("[bold red][+] Введите номер : ")  # Вводим номер
+                 │       └ <function Console.input at 0x00000237387125C0>
+                 └ <console width=120 ColorSystem.TRUECOLOR>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python312\Lib\site-packages\rich\console.py", line 2123, in input
+    result = input()
+
+EOFError
+2024-09-22 22:26:42.978 | ERROR    | __main__:<module>:128 - 
+Traceback (most recent call last):
+
+> File "C:\Users\zhvit\YandexDisk\Фриланс\Python\Pars_TG_BoT\main.py", line 126, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x00000210CF115B20>
+    │       └ <function run at 0x00000210C9CE0680>
+    └ <module 'asyncio' from 'C:\\Users\\zhvit\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\asyncio\\__init__.py'>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           │      │   └ <coroutine object main at 0x00000210CF08F5E0>
+           │      └ <function Runner.run at 0x00000210CC245580>
+           └ <asyncio.runners.Runner object at 0x00000210CDD75A00>
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │                        └ <Task finished name='Task-1' coro=<main() done, defined at C:\Users\zhvit\YandexDisk\Фриланс\Python\Pars_TG_BoT\main.py:84> e...
+           │    └ None
+           └ <asyncio.runners.Runner object at 0x00000210CDD75A00>
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 687, in run_until_complete
+    return future.result()
+           │      └ <method 'result' of '_asyncio.Task' objects>
+           └ <Task finished name='Task-1' coro=<main() done, defined at C:\Users\zhvit\YandexDisk\Фриланс\Python\Pars_TG_BoT\main.py:84> e...
+
+  File "C:\Users\zhvit\YandexDisk\Фриланс\Python\Pars_TG_BoT\main.py", line 93, in main
+    user_input = console.input("[bold red][+] Введите номер : ")  # Вводим номер
+                 │       └ <function Console.input at 0x00000210CF0E25C0>
+                 └ <console width=120 ColorSystem.TRUECOLOR>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python312\Lib\site-packages\rich\console.py", line 2123, in input
+    result = input()
+
+EOFError
+2024-09-22 22:26:52.699 | ERROR    | __main__:<module>:128 - 
+Traceback (most recent call last):
+
+> File "C:\Users\zhvit\YandexDisk\Фриланс\Python\Pars_TG_BoT\main.py", line 126, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x000001D1FD055B20>
+    │       └ <function run at 0x000001D1F7B90680>
+    └ <module 'asyncio' from 'C:\\Users\\zhvit\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\asyncio\\__init__.py'>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           │      │   └ <coroutine object main at 0x000001D1FCFCF5E0>
+           │      └ <function Runner.run at 0x000001D1FA0B5580>
+           └ <asyncio.runners.Runner object at 0x000001D1FCFFE660>
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │                        └ <Task finished name='Task-1' coro=<main() done, defined at C:\Users\zhvit\YandexDisk\Фриланс\Python\Pars_TG_BoT\main.py:84> e...
+           │    └ None
+           └ <asyncio.runners.Runner object at 0x000001D1FCFFE660>
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 687, in run_until_complete
+    return future.result()
+           │      └ <method 'result' of '_asyncio.Task' objects>
+           └ <Task finished name='Task-1' coro=<main() done, defined at C:\Users\zhvit\YandexDisk\Фриланс\Python\Pars_TG_BoT\main.py:84> e...
+
+  File "C:\Users\zhvit\YandexDisk\Фриланс\Python\Pars_TG_BoT\main.py", line 93, in main
+    user_input = console.input("[bold red][+] Введите номер : ")  # Вводим номер
+                 │       └ <function Console.input at 0x000001D1FD0225C0>
+                 └ <console width=120 ColorSystem.TRUECOLOR>
+
+  File "C:\Users\zhvit\AppData\Local\Programs\Python\Python312\Lib\site-packages\rich\console.py", line 2123, in input
+    result = input()
+
+EOFError

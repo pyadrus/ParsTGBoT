@@ -85,6 +85,8 @@ async def main():
     """Основное окно программы"""
     await checking_accounts()
     try:
+        print("[bold red]\nДата создания: 28.04.2023\n Версия программы: 0.0.5")
+
         console.print("[bold green][1] - Подключение нового аккаунта")
         console.print("[bold green][2] - Запуск parsing")
         console.print("[bold green][3] - Настройки")
