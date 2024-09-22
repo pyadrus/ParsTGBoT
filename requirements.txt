@@ -2,3 +2,4 @@ configparser~=7.0.0
 rich~=13.7.1
 Telethon~=1.36.0
 loguru~=0.7.2
+mistune~=3.0.2

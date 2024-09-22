@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import asyncio
+import json
 import os
 from datetime import datetime
 
@@ -7,7 +8,7 @@ from loguru import logger
 from rich import print
 from telethon import TelegramClient
 from telethon.tl.types import PeerChannel
-
+import mistune  # Библиотека для работы с Markdowns
 from system.system_setting import api_hash, connecting_new_account, checking_accounts
 from system.system_setting import api_id
 from system.system_setting import channel_url
@@ -72,6 +73,20 @@ async def download_images_from_telegram_channel(channel_url: str, ) -> None:
             # Создаем папку с датой и временем поста, если ее еще нет
             folder_path = f"download/{post_date}"
             os.makedirs(folder_path, exist_ok=True)
+
+            logger.info(f"Info: {message}")
+            logger.info(f"Info: {message.message}")  # Просмотр текста описания поста
+
+            if message.message == "": # Если нет текста описания поста, то не заносим в файл json
+                pass
+            else:
+
+                markdown_renderer = mistune.create_markdown() # Создаем рендерер Markdown
+                markdown_text = markdown_renderer(message.message)# Преобразуем текст в Markdown
+
+                with open(f"{folder_path}/{message.id}.json", 'w', encoding='utf-8') as json_file:
+                    json.dump(markdown_text, json_file, ensure_ascii=False, indent=4)
+
             # Имя файла включает идентификатор поста и идентификатор фотографии
             file_path = f"{folder_path}/{message.id}.jpg"
             # Скачиваем медиафайл
